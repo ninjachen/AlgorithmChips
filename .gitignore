@@ -1,0 +1,24 @@
+ipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+*.class
+out/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Gradle
+#gradle*
+#.gradle
+#gradle/
+
