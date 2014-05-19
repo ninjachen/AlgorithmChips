@@ -11,9 +11,9 @@ public class Sort {
 
         //init test data
 //        int [] unsorted = {1,2,3,5,4,2,6,2,1,1};
-        int[] unsorted = new int[5];
+        Integer[] unsorted = new Integer[15];
         for (int i = 0; i < unsorted.length; i++) {
-            unsorted[i] = (int) (Math.random() * 1000);
+            unsorted[i] = (int) (Math.random() * 100 + 0.5);
         }
         System.out.println("Quick sort start !");
         show(unsorted);
@@ -34,7 +34,7 @@ public class Sort {
      * @param left     left index
      * @param right    right index
      */
-    public static void quickSort(int[] unsorted, int left, int right) {
+    public static void quickSort(Comparable[] unsorted, int left, int right) {
         //error check
         System.out.println("call quick sort,from index " + left + " to " + right);
 //
@@ -48,16 +48,12 @@ public class Sort {
             quickSort(unsorted, leftPointer, right);
     }
 
-    public static int partition(int[] unsorted, int leftPointer, int rightPointer) {
+    private static int partition(Comparable[] unsorted, int leftPointer, int rightPointer) {
         int middle = (leftPointer + rightPointer) / 2;
-        int compareValue = unsorted[middle];
+        Comparable compareValue = unsorted[middle];
         while (leftPointer < rightPointer) {
-            while (unsorted[leftPointer] < compareValue) {
-                leftPointer++;
-            }
-            while (unsorted[rightPointer] > compareValue) {
-                rightPointer--;
-            }
+            while (unsorted[leftPointer].compareTo(compareValue) < 0) leftPointer++;
+            while (unsorted[rightPointer].compareTo(compareValue) > 0) rightPointer--;
             if (leftPointer <= rightPointer) {
                 swap(unsorted, leftPointer, rightPointer);
                 rightPointer--;
@@ -67,9 +63,9 @@ public class Sort {
         return leftPointer;
     }
 
-    public static void swap(int[] unsorted, int i, int j) {
+    private static void swap(Comparable[] unsorted, int i, int j) {
         swapCount++;
-        int temp = unsorted[i];
+        Comparable temp = unsorted[i];
         unsorted[i] = unsorted[j];
         unsorted[j] = temp;
 
@@ -77,10 +73,12 @@ public class Sort {
         show(unsorted);
     }
 
-    public static void show(int[] data) {
+    private static void show(Comparable[] data) {
         for (int i = 0; i < data.length; i++) {
             System.out.println("index: " + i + " , value: " + data[i]);
         }
 
     }
+
+
 }
