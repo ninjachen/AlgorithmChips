@@ -25,15 +25,25 @@ public class Sort {
     }
 
 
+    public static void mergeSort(Comparable[] unsorted, int left, int right) {
+        int middle = (left + right) / 2;
+        mergeSort(unsorted, left, middle);
+        mergeSort(unsorted, middle + 1, right);
+    }
 
-    /**
-     * let all the left int is less than unsorted[middle]
-     * let all the right int is right than unsorted[middle]
-     *
-     * @param unsorted origin data
-     * @param left     left index
-     * @param right    right index
-     */
+
+
+
+
+
+        /**
+         * let all the left int is less than unsorted[middle]
+         * let all the right int is right than unsorted[middle]
+         *
+         * @param unsorted origin data
+         * @param left     left index
+         * @param right    right index
+         */
     public static void quickSort(Comparable[] unsorted, int left, int right) {
         //error check
         System.out.println("call quick sort,from index " + left + " to " + right);
