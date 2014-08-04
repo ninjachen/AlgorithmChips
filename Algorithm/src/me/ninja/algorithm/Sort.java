@@ -33,17 +33,6 @@ public class Sort {
 
 
 
-
-
-
-        /**
-         * let all the left int is less than unsorted[middle]
-         * let all the right int is right than unsorted[middle]
-         *
-         * @param unsorted origin data
-         * @param left     left index
-         * @param right    right index
-         */
     public static void quickSort(Comparable[] unsorted, int left, int right) {
         //error check
         System.out.println("call quick sort,from index " + left + " to " + right);
