@@ -10,18 +10,31 @@ public class Sort {
     public static void main(String[] args) {
 
         //init test data
-//        int [] unsorted = {1,2,3,5,4,2,6,2,1,1};
-        Integer[] unsorted = new Integer[15];
-        for (int i = 0; i < unsorted.length; i++) {
-            unsorted[i] = (int) (Math.random() * 100 + 0.5);
+//        Integer [] data = {1,22,33,44,47,54,67,223,1111};
+        Integer target = 67;
+        Integer[] data = new Integer[55];
+        for (int i = 0; i < data.length; i++) {
+            if(i ==0)
+                data[i] = 1;
+            else
+                data[i] = data[i-1] + (int) (Math.random() * 100 + 0.5);
+            if(i == 43)
+                target = data[43];
         }
-        System.out.println("Quick sort start !");
-        show(unsorted);
 
-        quickSort(unsorted, 0, unsorted.length - 1);
+//        System.out.println("Quick sort start !");
+//        System.out.println();
+//        show(data);
+//
+//        quickSort(data, 0, data.length - 1);
+//        System.out.println();
+//        System.out.println("Quick sort finish.");
+        show(data);
 
-        System.out.println("Quick sort finish.");
-        show(unsorted);
+        System.out.println();
+        System.out.println("Search start");
+        System.out.println("target index is " + binarySearch(data, 0, data.length -1, target));
+
     }
 
 
@@ -79,5 +92,26 @@ public class Sort {
 
     }
 
+    /**
+     * search target's index from sorted data
+     * if miss,return -1;
+     * @param sorted
+     * @param target
+     * @return
+     */
+    private static int binarySearch(Comparable[] sorted,int start,int end,Comparable target){
+        if (start > end)
+            return -1;
+
+        int middle = (start + end)/2;
+        if(sorted[middle].compareTo(target) == 0)
+            return middle;
+        else if(sorted[middle].compareTo(target) > 0)
+            return binarySearch(sorted, start, middle - 1, target);
+        else if(sorted[middle].compareTo(target) < 0)
+            return binarySearch(sorted, middle + 1, end, target);
+
+        return -1;
+    }
 
 }
